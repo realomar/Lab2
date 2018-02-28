@@ -7,7 +7,7 @@ public class Card implements Comparable {
 	private eSuit eSuit;
 	
 	
-	//	TODO: Build a constructor for Card passing in eRank and eSuit
+	//	Constructor for card, passes in eRank and eSuit.
 	public Card(eRank eRank, eSuit eSuit) {
 		this.eRank = eRank;
 		this.eSuit = eSuit;
@@ -17,10 +17,8 @@ public class Card implements Comparable {
 	@Override
 	public int compareTo(Object o) {
 		Card c = (Card) o;
-		return 0;
-		//return c.geteRank().compareTo(this.geteRank());
-
-}
+		return c.geteRank().compareTo(this.geteRank());
+	}
 
 
 	public eRank geteRank() {
