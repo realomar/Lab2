@@ -1,9 +1,10 @@
 package pkgCore;
+import java.util.ArrayList;
 
 public class Deck {
 
-	//	TODO: Add 'cards' attribute that is an ArrayList of Card
-	
+	//	DONE: Add 'cards' attribute that is an ArrayList of Card
+	private ArrayList<Card> cards = new ArrayList<Card>();
 	
 	//	TODO: Add a contructor that passes in the number of decks, and then populates
 	//			ArrayList<Card> with cards (depending on number of decks).
