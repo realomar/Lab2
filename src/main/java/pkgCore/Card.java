@@ -1,5 +1,5 @@
 package pkgCore;
-import pkgEnum.*;
+import pkgEnum.*; // importing here so we don't have to write pkgEnum several times in the class.
 public class Card implements Comparable {
 
 	//  Add eRank and eSuit as attributes.
@@ -9,6 +9,11 @@ public class Card implements Comparable {
 	
 	//	Constructor for card, passes in eRank and eSuit.
 	public Card(eRank eRank, eSuit eSuit) {
+		this.eRank = eRank;
+		this.eSuit = eSuit;
+	}
+	// Overloading constructor so it can be accessed both ways.
+	public Card(eSuit eSuit, eRank eRank) {
 		this.eRank = eRank;
 		this.eSuit = eSuit;
 	}
@@ -40,4 +45,7 @@ public class Card implements Comparable {
 		this.eSuit = eSuit;
 	}
 	
+	public int getCardValue() {
+		return this.geteRank().getiRankNbr();
+	}
 }
