@@ -49,9 +49,4 @@ public class Deck {
 		return this.cards.size();
 	}
 	
-	// static deck sorter
-	public static Deck DeckSort(Deck d) {
-		Collections.sort(d.cards);
-		return d;
-	}
 }
