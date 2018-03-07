@@ -14,7 +14,8 @@ public class RollTest {
 
 		for (int a = 0; a < 10000; a++) {
 			Roll r = new Roll();
-			// TODO: Make sure value of roll is between 1 and 12.
+			if(r.getScore() < 2) fail("Roll too low");
+			else if(r.getScore() > 12) fail("Roll too high");
 		}
 
 	}
