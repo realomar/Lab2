@@ -12,24 +12,30 @@ public class Hand {
 
 	}
 
-	public int[] ScoreHand() { // Assumes that a hand will only contain 1 ACE
+	public ArrayList<Integer> ScoreHand() { 
+		
+		//returns a list size 2^(amount of aces in hand)
+		//Sets this.iScore value
 
-		int[] iScore = new int[2];
+		ArrayList<Integer> iScore = new ArrayList<Integer>();
 
-		iScore[0] = 0;
-		iScore[1] = 0;
-
+		iScore.add(0);
 
 		for (Card c : cards) {
 			if (c.geteRank().getiRankNbr() < 11) {
-				iScore[0] += c.geteRank().getiRankNbr();
-				iScore[1] += c.geteRank().getiRankNbr();
+				for(Integer score : iScore) {
+					score += c.geteRank().getiRankNbr();
+				}
 			} else if (c.geteRank().getiRankNbr() < 14) {
-				iScore[0] += 10;
-				iScore[1] += 10;
+				for(Integer score : iScore) {
+					score += 10;
+				}
 			} else {
-				iScore[0] += 1;
-				iScore[1] += 11;
+				int startSize = iScore.size();
+				for(int i = 0; i < startSize; ++i) {
+					iScore.add(iScore.get(i) + 11);
+					iScore.set(i, iScore.get(i));
+				}
 			}
 			// DONE: Determine the score.
 			// Cards:
@@ -41,17 +47,20 @@ public class Hand {
 			// 4-A = score = 5 or 15
 
 		}
-		if (iScore[0] == iScore[1]) {
-			this.iScore = iScore[0];
-			
-		} else { // The score is equivalent to the highest score that is not greater than 21
-			if (Math.max(iScore[0], iScore[1]) > 21)
-				this.iScore = Math.min(iScore[0], iScore[1]);
-			else
-				this.iScore = Math.max(iScore[0], iScore[1]);
+		
+		//Sets this.iScore equal to the largest possible score less than 22.
+		Collections.sort(iScore, Collections.reverseOrder()); 
+		for(Integer score : iScore) { 
+			if(score < 22) {
+				this.iScore = score;
+				break;
+			}
+			else if(score.equals(iScore.get(iScore.size()-1))) {
+				this.iScore = score;
+				break;
+			}
 		}
 		return iScore;
-
 	}
 
 	public void Draw(Deck d) {
@@ -74,4 +83,7 @@ public class Hand {
 		cards.add(c);
 	}
 
+	public int getiScore() {
+		return iScore;
+	}
 }
