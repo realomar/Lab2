@@ -132,7 +132,7 @@ public class HandTest {
 
 	@Test
 	public void test6() {
-		// TODO: Test J-A-A-A, score should be 12
+		// TODO: Test J-A-A-A, score should be 13
 		ArrayList<Card> cards = new ArrayList<Card>();
 		cards.add(new Card(eSuit.CLUBS,eRank.JACK));
 		cards.add(new Card(eSuit.CLUBS,eRank.ACE));
