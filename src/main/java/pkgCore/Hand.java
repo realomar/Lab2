@@ -16,6 +16,8 @@ public class Hand {
 		
 		//returns a list size 2^(amount of aces in hand)
 		//Sets this.iScore value
+		
+		//ArrayList requires objects. Use Integer instead of primitive int.
 
 		ArrayList<Integer> iScore = new ArrayList<Integer>();
 
